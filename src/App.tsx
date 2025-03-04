@@ -15,13 +15,17 @@ function App() {
         <h1 id="title">sneakers</h1>
         <div id="navigation">
           {navigation_items.map((item) => (
-            <a key={item} href="/">{item}</a>
+            <div key={item} id={item}>
+              <a href="/">{item}</a>
+            </div>
           ))}
         </div>
       </div>
       <div id="rightHeader">
         <img src="/images/icon-cart.svg" alt="cart"/>
-        <img id="profile" src="/images/image-avatar.png" alt="profile"/>
+        <a href="/">
+          <img id="profile" src="/images/image-avatar.png" alt="profile"/>
+        </a>
       </div>
     </header>
   )

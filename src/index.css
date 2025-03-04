@@ -4,6 +4,7 @@ html {
 }
 body {
   display: flex;
+  font-family: 'KumbhSans', sans-serif;
   justify-content: center;
   flex-direction: column;
   width: 1440px;
