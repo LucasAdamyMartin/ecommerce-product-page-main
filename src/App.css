@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'KumbhSans';
-  src: url('assets/KumbhSans-Regular.ttf') format('truetype'); 
-  font-weight: normal;
+  src: url('assets/Kumbh_Sans/KumbhSans-VariableFont_YOPQ,wght.ttf') format('truetype'); 
+  font-weight: 100 900;
   font-style: normal;
 }
 
@@ -16,12 +16,17 @@ header {
 #title {
   font-weight: 700;
 }
+
 #leftHeader {
   display: flex;
   flex-direction: row;
   gap: 50px;
 }
 
+#cartButton {
+  all: unset;
+  cursor: pointer;
+}
 #navigation {
   display: flex;
   flex-direction: row;
@@ -31,8 +36,14 @@ header {
   color: hsl(219, 9%, 45%);
 }
 
+@media (max-width : 720px) {
+  #navigation {
+    display: none;
+  }
+}
 a {
   all: unset;
+  cursor: pointer;
 }
 #rightHeader {
   display: flex;
@@ -42,6 +53,7 @@ a {
 }
 
 #profile {
+  cursor: pointer;
   width: 50px;
 }
 
@@ -58,4 +70,13 @@ a {
 
 #navigation div:hover {
   border-bottom : 3px solid hsl(26, 100%, 55%);
+}
+
+#cartBox {
+  position: absolute;
+  background-color: blue;
+  top: 95px;
+  right: 2dvw;
+  width: 360px;
+  height: 265px;
 }

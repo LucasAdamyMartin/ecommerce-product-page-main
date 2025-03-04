@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css'
 
 function App() {
@@ -9,25 +10,38 @@ function App() {
     "Contact"
   ]
 
+  const [cartIsOpen, setCartIsOpen] = useState(false);
+
+  const handleChange = () => {
+    setCartIsOpen((prev) => !prev);
+    console.log(!cartIsOpen);
+  };
+
   return (
-    <header>
-      <div id="leftHeader">
-        <h1 id="title">sneakers</h1>
-        <div id="navigation">
-          {navigation_items.map((item) => (
-            <div key={item} id={item}>
-              <a href="/">{item}</a>
-            </div>
-          ))}
+      <header>
+        <div id="leftHeader">
+          <h1 id="title">sneakers</h1>
+          <div id="navigation">
+            {navigation_items.map((item) => (
+              <div key={item} id={item}>
+                <a href="/">{item}</a>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      <div id="rightHeader">
-        <img src="/images/icon-cart.svg" alt="cart"/>
-        <a href="/">
-          <img id="profile" src="/images/image-avatar.png" alt="profile"/>
-        </a>
-      </div>
-    </header>
+        <div id="rightHeader">
+          <button onClick={handleChange} id="cartButton">
+            <img src="/images/icon-cart.svg" alt="cart"/>
+          </button>
+          <a href="/">
+            <img id="profile" src="/images/image-avatar.png" alt="profile"/>
+          </a>
+        </div>
+        {cartIsOpen && 
+          <div id="cartBox">
+          </div>
+          }
+      </header>
   )
 }
 
