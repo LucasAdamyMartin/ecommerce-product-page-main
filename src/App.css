@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'KumbhSans';
+  src: url('assets/KumbhSans-ExtraBold.ttf') format('truetype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 2px solid hsl(223, 64%, 98%) ;
+  padding-bottom: 20px;
+}
+
+#title {
+  font-family: 'KumbhSans', sans-serif;
+  font-weight: 400;
+}
+#leftHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+}
+
+#navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  font-size: 20px;
+}
+
+#rightHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+#profile {
+  width: 50px;
+}
