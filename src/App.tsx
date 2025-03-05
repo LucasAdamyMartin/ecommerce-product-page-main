@@ -1,48 +1,59 @@
-import { useState } from 'react';
-import './App.css'
+import './assets/styles/App.css'
+import { Header } from './components/Header'
+import { Caroussel } from './components/Caroussel';
+import { useImage } from './hooks/UseImage';
+import { ImageProvider } from './context/ImageProvider';
 
-function App() {
-  const navigation_items : string[] = [
-    "Collections",
-    "Men",
-    "Women",
-    "About",
-    "Contact"
-  ]
-
-  const [cartIsOpen, setCartIsOpen] = useState(false);
-
-  const handleChange = () => {
-    setCartIsOpen((prev) => !prev);
-    console.log(!cartIsOpen);
-  };
-
+function AppContent() {
+  const {isGalleryOpen, setImagePick, handleGallery } = useImage();
   return (
-      <header>
-        <div id="leftHeader">
-          <h1 id="title">sneakers</h1>
-          <div id="navigation">
-            {navigation_items.map((item) => (
-              <div key={item} id={item}>
-                <a href="/">{item}</a>
+    <>
+      <Header/>
+      {isGalleryOpen && 
+            <div id="galleryContainer">
+              <div id="galleryBackground"/>
+              <div id="closeContainer" >
+                <button id="close" onClick={handleGallery}>
+                  <img src='/images/icon-close.svg' alt="close"/>
+                </button>
               </div>
-            ))}
-          </div>
+              <div id="galleryCaroussel">
+              <Caroussel/>
+              <button id="previous" onClick={() => setImagePick((prev) => ((prev - 2 + 4) % 4) + 1)}>
+                <img src='/images/icon-next.svg' alt="previous"/>
+              </button>
+              <button id="next">
+                <img src='/images/icon-next.svg' alt="next"/>
+              </button>
+              </div>
+            </div>
+        }
+      <div id="container">
+        <div id="imageSection">
+          <Caroussel/>
         </div>
-        <div id="rightHeader">
-          <button onClick={handleChange} id="cartButton">
-            <img src="/images/icon-cart.svg" alt="cart"/>
-          </button>
-          <a href="/">
-            <img id="profile" src="/images/image-avatar.png" alt="profile"/>
-          </a>
-        </div>
-        {cartIsOpen && 
-          <div id="cartBox">
-          </div>
-          }
-      </header>
+      Sneaker Company
+
+      Fall Limited Edition Sneakers
+
+      These low-profile sneakers are your perfect casual wear companion. Featuring a 
+      durable rubber outer sole, they’ll withstand everything the weather can offer.
+
+      $125.00
+      50%
+      $250.00
+
+      0
+      Add to cart
+      </div>
+    </>
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <ImageProvider>
+      <AppContent />
+    </ImageProvider>
+  );
+}

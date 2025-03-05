@@ -1,0 +1,46 @@
+#caroussel button.pick {
+    height: 100px;
+    border-radius: 18px;
+    border: 2px solid hsl(26, 100%, 55%);
+    background-color: white;
+  }
+  
+  #caroussel button.pick img {
+    opacity: 0.2;
+    transition: opacity 0.3s ease, filter 0.3s ease; 
+  }
+    
+  #caroussel {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #caroussel img {
+    width: 100px;
+    border-radius: 14px;
+  }
+  
+  #caroussel button.noPick:hover img {
+    opacity: 0.4;
+  }
+  
+  #caroussel button {
+    height: 100px;
+    background-color: white;
+    all: unset;
+    cursor: pointer;
+  }
+  
+  #largeImage img {
+    width: 500px;
+    border-radius: 14px;
+  }
+  
+  #largeImage {
+    all: unset;
+    cursor: pointer;
+  }
+  
