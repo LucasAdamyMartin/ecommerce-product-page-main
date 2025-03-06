@@ -1,0 +1,91 @@
+#galleryBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100dvh;
+    width: 100dvw;
+    background-color: hsl(0, 0%, 0%);
+    opacity: 0.75;
+  }
+  
+  #galleryContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 100dvw;
+    gap:15px;
+  }
+  
+  #galleryCaroussel {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 20;
+  }
+  
+  #closeContainer {
+    display: flex;
+    z-index: 20;
+    justify-content: end;
+    width: 600px;
+    align-items: center;
+  }
+  
+  #closeContainer button {
+    all : unset;
+    cursor: pointer;
+  }
+  
+  #closeContainer button img {
+    width: 18px;
+    filter: invert(100%) brightness(1000%);
+  }
+  #closeContainer button img:hover {
+    filter: invert(51%) sepia(96%) saturate(789%) hue-rotate(-10deg);
+  }
+  
+  #galleryCaroussel #largeImage img {
+    width: 600px;
+  }
+
+  #previous, #next {
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 45%; 
+    transform: translateY(-50%); 
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+  }
+  
+  #previous {
+    left: -25px; 
+  }
+  
+  #next {
+    right: -25px; 
+  }
+  
+  #previous img, #next img {
+    width: 12px;
+  }
+  
+  #previous:hover img, #next:hover img {
+    filter: invert(51%) sepia(96%) saturate(789%) hue-rotate(-10deg);
+  }
+  
+  #previous img {
+    rotate: 180deg;
+  }

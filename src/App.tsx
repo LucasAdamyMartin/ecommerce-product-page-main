@@ -3,48 +3,38 @@ import { Header } from './components/Header'
 import { Caroussel } from './components/Caroussel';
 import { useImage } from './hooks/UseImage';
 import { ImageProvider } from './context/ImageProvider';
+import { Gallery } from './components/Gallery';
 
 function AppContent() {
-  const {isGalleryOpen, setImagePick, handleGallery } = useImage();
+  const {isGalleryOpen } = useImage();
   return (
     <>
       <Header/>
-      {isGalleryOpen && 
-            <div id="galleryContainer">
-              <div id="galleryBackground"/>
-              <div id="closeContainer" >
-                <button id="close" onClick={handleGallery}>
-                  <img src='/images/icon-close.svg' alt="close"/>
-                </button>
-              </div>
-              <div id="galleryCaroussel">
-              <Caroussel/>
-              <button id="previous" onClick={() => setImagePick((prev) => ((prev - 2 + 4) % 4) + 1)}>
-                <img src='/images/icon-next.svg' alt="previous"/>
-              </button>
-              <button id="next">
-                <img src='/images/icon-next.svg' alt="next"/>
-              </button>
-              </div>
-            </div>
-        }
+      {isGalleryOpen && <Gallery/>}
       <div id="container">
         <div id="imageSection">
           <Caroussel/>
         </div>
-      Sneaker Company
-
-      Fall Limited Edition Sneakers
-
-      These low-profile sneakers are your perfect casual wear companion. Featuring a 
-      durable rubber outer sole, they’ll withstand everything the weather can offer.
-
-      $125.00
-      50%
-      $250.00
-
-      0
-      Add to cart
+        <div id="textSection">
+          <p id="companyName">Sneaker Company</p>
+          <h1 id="shoesName">Fall Limited Edition Sneakers</h1>
+          <p id="description">These low-profile sneakers are your perfect casual wear companion. Featuring a 
+          durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+          <h2 id="priceDiscount">$125.00</h2>
+          <div id="discount">50%</div>
+          <p id="price">$250.00</p>
+          <div id="addToCart">
+            <div id="numberOfProduct">
+              <img id="minus" src='/images/icon-minus.svg' alt="minus"/>
+              <p>0</p>
+              <img id="plus" src='/images/icon-plus.svg' alt="plus"/>
+            </div>
+            <div id="buttonToAdd">
+              <img src='images/icon-cart.svg' alt='cart'/>
+              <p>Add to cart</p>
+            </div>
+        </div>
+        </div>
       </div>
     </>
   )
