@@ -4,9 +4,24 @@ import { Caroussel } from './components/Caroussel';
 import { useImage } from './hooks/UseImage';
 import { ImageProvider } from './context/ImageProvider';
 import { Gallery } from './components/Gallery';
+import { useState } from 'react';
 
 function AppContent() {
-  const {isGalleryOpen } = useImage();
+  const {isGalleryOpen, setCartIsOpen, setShowProduct} = useImage();
+  const [countPanier, setCountPanier] = useState(0);
+
+  const handleRemovePanier = () => (
+    countPanier > 0 ? setCountPanier((prev) => (prev - 1)) : alert("vous êtes au minimum")
+  )
+  const handleAddPanier = () => (
+    setCountPanier((prev) => (prev + 1))
+  )
+
+  const handlePlaceIn = () => (
+      setCartIsOpen(true),
+      setShowProduct(true)
+  )
+ 
   return (
     <>
       <Header/>
@@ -25,14 +40,18 @@ function AppContent() {
           <p id="price">$250.00</p>
           <div id="addToCart">
             <div id="numberOfProduct">
-              <img id="minus" src='/images/icon-minus.svg' alt="minus"/>
-              <p>0</p>
-              <img id="plus" src='/images/icon-plus.svg' alt="plus"/>
+              <button onClick={handleRemovePanier}>
+                <img id="minus" src='/images/icon-minus.svg' alt="minus"/>
+              </button>
+              <p>{countPanier}</p>
+              <button onClick={handleAddPanier}>
+                <img id="plus" src='/images/icon-plus.svg' alt="plus"/>
+              </button>
             </div>
-            <div id="buttonToAdd">
+            <button id="buttonToAdd" onClick={handlePlaceIn}>
               <img src='images/icon-cart.svg' alt='cart'/>
               <p>Add to cart</p>
-            </div>
+            </button>
         </div>
         </div>
       </div>

@@ -5,7 +5,11 @@ interface ImageContextType {
   imagePick: number;
   setImagePick: React.Dispatch<React.SetStateAction<number>>,
   isGalleryOpen: boolean;
-  handleGallery: () => void;
+  setIsGalleryOpen : React.Dispatch<React.SetStateAction<boolean>>,
+  cartIsOpen: boolean,
+  setCartIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
+  showProduct: boolean,
+  setShowProduct: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 // Création du contexte

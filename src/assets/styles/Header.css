@@ -94,12 +94,77 @@ header {
   
   #bodyCart {
     display: flex;
+    flex-direction: column;
     flex: 1;
-    justify-content: center;
     align-items: center;
     color: hsl(219, 9%, 45%);
     font-weight: 700;
+    gap: 20px;
   }
+
+  #firstPart {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  #firstPart img {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+  }
+
+  #firstPart h1 {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+
+  #firstPart div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #firstPart strong {
+    font-weight: 700;
+    color: black;
+  }
+
+  #firstPart button {
+    all: unset;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+  }
+
+  #firstPart button img {
+    width: 15px;
+    height: 15px;
+  }
+
+
+  #firstPart p {
+    font-weight: 400;
+    margin-top: 6px;
+  }
+
+  #secondPart button {
+    all : unset;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 60px;
+    background-color: hsl(26, 100%, 55%);
+    border-radius: 10px;
+    color:black;
+    font-weight: 700;
+  }
+
+
+
   #titleCart {
     font-weight: 700;
     font-size: 16px;

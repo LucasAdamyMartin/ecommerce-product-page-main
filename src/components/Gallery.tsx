@@ -3,12 +3,12 @@ import { Caroussel } from "./Caroussel";
 import '../assets/styles/Gallery.css'
 
 export function Gallery() {
-    const {handleGallery, setImagePick} = useImage();
+    const {setIsGalleryOpen, setImagePick} = useImage();
     return(
         <div id="galleryContainer">
             <div id="galleryBackground"/>
                 <div id="closeContainer" >
-                    <button id="close" onClick={handleGallery}>
+                    <button id="close" onClick={() => setIsGalleryOpen((prev) => (!prev))}>
                         <img src='/images/icon-close.svg' alt="close"/>
                     </button>
                 </div>

@@ -1,10 +1,10 @@
 import { useImage } from "../hooks/UseImage"
 import '../assets/styles/Caroussel.css'
 export function Caroussel() {
-    const {imagePick, setImagePick, handleGallery} = useImage();
+    const {imagePick, setImagePick, setIsGalleryOpen} = useImage();
     return (
       <>
-          <button id="largeImage" onClick={handleGallery}>
+          <button id="largeImage" onClick={() => (setIsGalleryOpen((true)))}>
               <img src={`/images/image-product-${imagePick}.jpg`} alt={`product${imagePick}`}/>
           </button>
             <div id="caroussel">

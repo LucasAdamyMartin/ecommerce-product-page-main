@@ -8,18 +8,21 @@ interface ImageProviderProps {
   export const ImageProvider = ({ children }: ImageProviderProps) => {
     const [imagePick, setImagePick] = useState<number>(1);
     const [isGalleryOpen, setIsGalleryOpen] = useState<boolean>(false);
-  
-    const handleGallery = () => {
-      setIsGalleryOpen((prev) => !prev);
-    };
-  
+    const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
+    const [showProduct, setShowProduct] = useState<boolean>(false);
+
+    
     // ✅ Mémoriser la valeur du contexte pour éviter les recréations inutiles
     const value = useMemo(() => ({
       imagePick,
       setImagePick,
       isGalleryOpen,
-      handleGallery,
-    }), [imagePick, isGalleryOpen]);
+      setIsGalleryOpen,
+      cartIsOpen,
+      setCartIsOpen,
+      showProduct,
+      setShowProduct,
+    }), [imagePick, isGalleryOpen, cartIsOpen, showProduct]);
   
     return (
       <ImageContext.Provider value={value}>
