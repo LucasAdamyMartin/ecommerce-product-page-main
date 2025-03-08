@@ -7,20 +7,26 @@ import { Gallery } from './components/Gallery';
 import { useState } from 'react';
 
 function AppContent() {
-  const {isGalleryOpen, setCartIsOpen, setShowProduct} = useImage();
-  const [countPanier, setCountPanier] = useState(0);
+  const {isGalleryOpen, setCartIsOpen, setShowProduct , setCountPanier} = useImage();
+  const [selectedQuantity, setSelectedQuantity] = useState(0);
 
-  const handleRemovePanier = () => (
-    countPanier > 0 ? setCountPanier((prev) => (prev - 1)) : alert("vous êtes au minimum")
-  )
-  const handleAddPanier = () => (
-    setCountPanier((prev) => (prev + 1))
-  )
+  const handleRemovePanier = () => {
+    setSelectedQuantity((prev) => (prev > 0 ? prev - 1 : 0));
+  };
 
-  const handlePlaceIn = () => (
-      setCartIsOpen(true),
-      setShowProduct(true)
-  )
+  const handleAddPanier = () => {
+    setSelectedQuantity((prev) => prev + 1);
+  };
+
+  const handlePlaceIn = () => {
+    if (selectedQuantity === 0) {
+      alert("Sélectionnez un nombre de produits valide");
+    } else {
+      setCountPanier(selectedQuantity); 
+      setCartIsOpen(true);
+      setShowProduct(true);
+    }
+  };
  
   return (
     <>
@@ -35,15 +41,17 @@ function AppContent() {
           <h1 id="shoesName">Fall Limited Edition Sneakers</h1>
           <p id="description">These low-profile sneakers are your perfect casual wear companion. Featuring a 
           durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
-          <h2 id="priceDiscount">$125.00</h2>
-          <div id="discount">50%</div>
+          <div id="discountSection">
+            <h2 id="priceDiscount">$125.00</h2>
+           <div id="discount">50%</div>
+          </div>
           <p id="price">$250.00</p>
           <div id="addToCart">
             <div id="numberOfProduct">
               <button onClick={handleRemovePanier}>
                 <img id="minus" src='/images/icon-minus.svg' alt="minus"/>
               </button>
-              <p>{countPanier}</p>
+              <p>{selectedQuantity}</p>
               <button onClick={handleAddPanier}>
                 <img id="plus" src='/images/icon-plus.svg' alt="plus"/>
               </button>

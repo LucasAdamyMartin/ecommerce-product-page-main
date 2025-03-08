@@ -10,12 +10,13 @@ export function Header() {
         "Contact"
       ]
     
-    const {cartIsOpen, setCartIsOpen, showProduct, setShowProduct} = useImage();
+    const {cartIsOpen, setCartIsOpen, showProduct, setShowProduct, countPanier} = useImage();
 
     const handleChange = () => {
         setCartIsOpen((prev) => !prev);
         console.log(!cartIsOpen);
     };
+
     return(
         <header>
         <div id="leftHeader">
@@ -31,6 +32,7 @@ export function Header() {
         <div id="rightHeader">
           <button onClick={handleChange} id="cartButton">
             <img src="/images/icon-cart.svg" alt="cart"/>
+            {showProduct && <div>{countPanier}</div>}
           </button>
           <a href="/">
             <img id="profile" src="/images/image-avatar.png" alt="profile"/>
@@ -50,7 +52,7 @@ export function Header() {
                 <img src='images/image-product-1-thumbnail.jpg' alt="product"/>
                 <div>
                   <h1>Fall Limited Edition Sneakers</h1>
-                  <p>$125.00 x 0 <strong>$125</strong></p>
+                  <p>$125.00 x {countPanier} <strong>${125 * countPanier}.00</strong></p>
                 </div>
                 <button onClick={() => (setShowProduct(false))}>
                   <img src='images/icon-delete.svg' alt="delete"/>
