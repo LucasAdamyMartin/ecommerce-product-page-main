@@ -5,13 +5,20 @@
   font-style: normal;
 }
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    width: 100%;
     border-bottom: 3px solid hsl(223, 64%, 98%) ;
     padding-bottom: 20px;
   }
   
+  #containerHeader {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+  }
   #title {
     font-weight: 700;
     letter-spacing: -1px;
@@ -103,12 +110,14 @@ header {
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     top: 95px;
-    right: 2dvw;
-    width: 360px;
+    right: 2.5dvw;
+    width: 355px;
     height: 265px;
   }
   
   #headerCart {
+    display: flex;
+    justify-content: start;
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 18px;
@@ -198,3 +207,35 @@ header {
     font-size: 16px;
   }
   
+@media (max-width : 650px) {
+  header {
+    width: 100%;
+    padding-bottom: 6px;
+    padding-top: 6px;
+  }
+  #leftHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #leftHeader #title {
+    margin: 0;
+  }
+  #rightHeader {
+    gap:20px;
+  }
+  #cartButton img{
+    width: 18px;
+  }
+  #profile {
+    width: 22px;
+  }
+  #cartBox {
+    top: 65px;
+  }
+}
+@media (max-width: 375px) {
+  #cartBox {
+    width: 95dvw;
+  }
+}

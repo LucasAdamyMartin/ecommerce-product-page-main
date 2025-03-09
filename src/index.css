@@ -7,7 +7,18 @@ body {
   font-family: 'KumbhSans', sans-serif;
   justify-content: center;
   flex-direction: column;
-  width: 1440px;
-  padding-left: 150px;
-  padding-right: 150px;
+  max-width: 1440px;
+  width: 100%;
+}
+
+.attribution {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width : 650px) {
+  body {
+  margin: 0px;
+  }
 }

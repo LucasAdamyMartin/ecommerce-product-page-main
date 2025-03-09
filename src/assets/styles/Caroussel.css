@@ -70,3 +70,19 @@
     cursor: pointer;
   }
   
+  @media (max-width : 650px) {
+    #caroussel {
+      display: none;
+    }
+    #largeImage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100dvw;
+    }
+    #largeImage img {
+      border-radius: 0;
+      width: 100%;
+      height: 85dvw;
+    }
+  }

@@ -12,6 +12,16 @@
   gap: 80px;
 }
 
+@media (max-width: 1200px) {
+  #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    gap:0px;
+  }
+}
+
 #imageSection {
     display: flex;
     flex-direction: column;
@@ -23,7 +33,6 @@
 
 #textSection {
   display: flex;
-  position: relative;
   margin-top: 100px;
   margin-bottom: 200px;
   flex-direction: column;
@@ -148,4 +157,42 @@
 
 #buttonToAdd p {
   font-weight: 700;
+}
+
+@media (max-width: 650px) {
+  #container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #imageSection  {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  #companyName {
+    font-size: 12px;
+  }
+  #shoesName {
+    font-size: 28px;
+    width: 100%;
+  }
+  #description {
+    font-size: 14px;
+    width: 100%;
+  }
+  #textSection {
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 90%;
+  }
+  #addToCart {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #buttonToAdd {
+    width: 90%;
+  }
 }
