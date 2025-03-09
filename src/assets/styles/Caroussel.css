@@ -66,6 +66,9 @@
   }
   
   #largeImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     all: unset;
     cursor: pointer;
   }

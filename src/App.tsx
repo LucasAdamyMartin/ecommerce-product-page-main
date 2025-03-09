@@ -4,10 +4,10 @@ import { Caroussel } from './components/Caroussel';
 import { useImage } from './hooks/UseImage';
 import { ImageProvider } from './context/ImageProvider';
 import { Gallery } from './components/Gallery';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function AppContent() {
-  const {isGalleryOpen, setCartIsOpen, setShowProduct , setCountPanier} = useImage();
+  const {isGalleryOpen, imagePick, setCartIsOpen, setShowProduct , setCountPanier, setImagePick} = useImage();
   const [selectedQuantity, setSelectedQuantity] = useState(0);
 
   const handleRemovePanier = () => {
@@ -27,25 +27,56 @@ function AppContent() {
       setShowProduct(true);
     }
   };
+
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
  
   return (
     <>
       <Header/>
       {isGalleryOpen && <Gallery/>}
+      <div id="body">
       <div id="container">
         <div id="imageSection">
-          <Caroussel/>
+          { (windowSize.width > 650) ? <Caroussel/> : 
+          <div id="largeImage">
+            <button id="previous" onClick={() => setImagePick((prev) => ((prev - 2 + 4) % 4) + 1)}>
+              <img src='/images/icon-next.svg' alt="previous"/>
+            </button>
+            <button id="next" onClick={() => setImagePick((prev) => ((prev % 4) + 1))}>
+              <img src='/images/icon-next.svg' alt="next"/>
+            </button>
+            <img src={`/images/image-product-${imagePick}.jpg`} alt={`product${imagePick}`}/>
+          </div>
+        }
         </div>
         <div id="textSection">
           <p id="companyName">Sneaker Company</p>
           <h1 id="shoesName">Fall Limited Edition Sneakers</h1>
           <p id="description">These low-profile sneakers are your perfect casual wear companion. Featuring a 
           durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+          <div id="containerPrice">
           <div id="discountSection">
             <h2 id="priceDiscount">$125.00</h2>
            <div id="discount">50%</div>
           </div>
           <p id="price">$250.00</p>
+          </div>
           <div id="addToCart">
             <div id="numberOfProduct">
               <button onClick={handleRemovePanier}>
@@ -62,6 +93,7 @@ function AppContent() {
             </button>
         </div>
         </div>
+      </div>
       </div>
     </>
   )

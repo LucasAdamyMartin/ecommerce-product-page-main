@@ -1,5 +1,6 @@
 import '../assets/styles/Header.css'
 import { useImage } from "../hooks/UseImage";
+import { Cart } from './Cart';
 
 export function Header() {
     const navigation_items : string[] = [
@@ -10,7 +11,7 @@ export function Header() {
         "Contact"
       ]
     
-    const {cartIsOpen, setCartIsOpen, showProduct, setShowProduct, countPanier} = useImage();
+    const {cartIsOpen, setCartIsOpen, showProduct , countPanier} = useImage();
 
     const handleChange = () => {
         setCartIsOpen((prev) => !prev);
@@ -35,37 +36,11 @@ export function Header() {
                 <img src="/images/icon-cart.svg" alt="cart"/>
                 {showProduct && <div>{countPanier}</div>}
               </button>
-              <a href="/">
-                <img id="profile" src="/images/image-avatar.png" alt="profile"/>
+              {cartIsOpen && <Cart/> }  
+              <a href='/'>
+              <img id="profile" src="/images/image-avatar.png" alt="profile"/>
               </a>
             </div>
-            {cartIsOpen && 
-              <div id="cartBox">
-                <header id="headerCart">
-                  <p id="titleCart">
-                    Cart
-                  </p>
-                </header>
-                <div id="bodyCart">
-                  {showProduct ? 
-                  <>
-                  <div id="firstPart">
-                    <img src='images/image-product-1-thumbnail.jpg' alt="product"/>
-                    <div>
-                      <h1>Fall Limited Edition Sneakers</h1>
-                      <p>$125.00 x {countPanier} <strong>${125 * countPanier}.00</strong></p>
-                    </div>
-                    <button onClick={() => (setShowProduct(false))}>
-                      <img src='images/icon-delete.svg' alt="delete"/>
-                    </button> 
-                  </div>
-                  <div id="secondPart">
-                    <button>Checkout</button>
-                  </div> 
-                  </> : <p>Your cart is empty.</p>}
-                </div>
-              </div>
-              }
         </div>
       </header>
     )
