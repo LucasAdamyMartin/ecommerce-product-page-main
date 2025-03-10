@@ -11,8 +11,8 @@ interface ImageProviderProps {
     const [cartIsOpen, setCartIsOpen] = useState<boolean>(false);
     const [showProduct, setShowProduct] = useState<boolean>(false);
     const [countPanier, setCountPanier] = useState(0);
-    
-    // ✅ Mémoriser la valeur du contexte pour éviter les recréations inutiles
+    const [menuIsOpen, setMenuIsOpen] = useState(false);
+
     const value = useMemo(() => ({
       imagePick,
       setImagePick,
@@ -23,8 +23,10 @@ interface ImageProviderProps {
       showProduct,
       setShowProduct,
       countPanier,
-      setCountPanier
-    }), [imagePick, isGalleryOpen, cartIsOpen, showProduct, countPanier]);
+      setCountPanier,
+      menuIsOpen,
+      setMenuIsOpen
+    }), [imagePick, isGalleryOpen, cartIsOpen, showProduct, countPanier, menuIsOpen]);
   
     return (
       <ImageContext.Provider value={value}>

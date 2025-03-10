@@ -12,6 +12,8 @@ interface ImageContextType {
   setShowProduct: React.Dispatch<React.SetStateAction<boolean>>,
   countPanier: number,
   setCountPanier: React.Dispatch<React.SetStateAction<number>>
+  menuIsOpen : boolean,
+  setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 // Création du contexte

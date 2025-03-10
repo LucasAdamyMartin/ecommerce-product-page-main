@@ -5,11 +5,12 @@ import { useImage } from './hooks/UseImage';
 import { ImageProvider } from './context/ImageProvider';
 import { Gallery } from './components/Gallery';
 import { useEffect, useState } from 'react';
+import { Menu } from './components/Menu';
 
 function AppContent() {
-  const {isGalleryOpen, imagePick, setCartIsOpen, setShowProduct , setCountPanier, setImagePick} = useImage();
+  const {isGalleryOpen, imagePick, setCartIsOpen, setShowProduct , setCountPanier, setImagePick, menuIsOpen, setMenuIsOpen} = useImage();
   const [selectedQuantity, setSelectedQuantity] = useState(0);
-
+  
   const handleRemovePanier = () => {
     setSelectedQuantity((prev) => (prev > 0 ? prev - 1 : 0));
   };
@@ -40,28 +41,28 @@ function AppContent() {
         height: window.innerHeight,
       });
     };
-
+    if (windowSize.width > 800) setMenuIsOpen(false)
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [windowSize.width]);
  
   return (
     <>
       <Header/>
+      {menuIsOpen && <Menu/>}
       {isGalleryOpen && <Gallery/>}
       <div id="body">
       <div id="container">
         <div id="imageSection">
           { (windowSize.width > 650) ? <Caroussel/> : 
-          <div id="largeImage">
-            <button id="previous" onClick={() => setImagePick((prev) => ((prev - 2 + 4) % 4) + 1)}>
-              <img src='/images/icon-next.svg' alt="previous"/>
-            </button>
-            <button id="next" onClick={() => setImagePick((prev) => ((prev % 4) + 1))}>
-              <img src='/images/icon-next.svg' alt="next"/>
-            </button>
+          <div id="largeImageMobile">
             <img src={`/images/image-product-${imagePick}.jpg`} alt={`product${imagePick}`}/>
+            <button id="previousMobile" onClick={() => setImagePick((prev) => ((prev - 2 + 4) % 4) + 1)}>
+              <img src='/images/icon-next.svg' alt="previousMobile" style={{   rotate: '180deg', width: '12px', height: 'auto' }}/>
+            </button>
+            <button id="nextMobile" onClick={() => setImagePick((prev) => ((prev % 4) + 1))}>
+              <img src='/images/icon-next.svg' alt="nextMobile" style={{ width: '12px', height: 'auto' }}/>
+            </button>
           </div>
         }
         </div>

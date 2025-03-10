@@ -21,14 +21,23 @@ header {
     max-width: 1100px;
   }
   #title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 700;
     letter-spacing: -1px;
+    margin: 0px;
+    margin-top: -8px;
   }
   
   #leftHeader {
     display: flex;
     flex-direction: row;
     gap: 50px;
+  }
+
+  #menu {
+    display: none;
   }
   
   #cartButton {
@@ -66,11 +75,6 @@ header {
     color: hsl(219, 9%, 45%);
   }
   
-  @media (max-width : 1010px) {
-    #navigation {
-      display: none;
-    }
-  }
   a {
     all: unset;
     cursor: pointer;
@@ -171,19 +175,37 @@ header {
     opacity: 0.6;
   }
   
-@media (max-width : 650px) {
-  header {
-    width: 100%;
-    padding-bottom: 6px;
-    padding-top: 6px;
+@media (max-width: 800px) {
+  #navigation {
+    display: none;
   }
-  #leftHeader {
+  #menu {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    all: unset;
   }
-  #leftHeader #title {
+}
+@media (max-width : 650px) {
+  
+  header {
+    width: 100%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+  #leftHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  #title {
     margin: 0;
+    margin-top: -7px;
   }
   #rightHeader {
     gap:20px;

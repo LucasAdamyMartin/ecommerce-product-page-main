@@ -1,17 +1,11 @@
 import '../assets/styles/Header.css'
+import { navigation_items } from '../constants/constant';
 import { useImage } from "../hooks/UseImage";
 import { Cart } from './Cart';
 
 export function Header() {
-    const navigation_items : string[] = [
-        "Collections",
-        "Men",
-        "Women",
-        "About",
-        "Contact"
-      ]
     
-    const {cartIsOpen, setCartIsOpen, showProduct , countPanier} = useImage();
+    const {cartIsOpen, setCartIsOpen, showProduct , countPanier, setMenuIsOpen} = useImage();
 
     const handleChange = () => {
         setCartIsOpen((prev) => !prev);
@@ -22,6 +16,9 @@ export function Header() {
         <header>
           <div id="containerHeader">
             <div id="leftHeader">
+              <button id="menu" onClick={() => setMenuIsOpen((prev) => (!prev))}>
+                <img src='/images/icon-menu.svg' alt='menu'/>
+              </button>
               <h1 id="title">sneakers</h1>
               <div id="navigation">
                 {navigation_items.map((item) => (

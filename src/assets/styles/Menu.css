@@ -1,0 +1,39 @@
+#menuWindow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: row;
+}
+
+#menuContainer {
+    z-index: 1000;
+    background-color: white;
+    height: 100%;
+    width: 61%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 50px;
+    padding: 20px;
+}
+#menuClose button {
+    all: unset;
+}
+#navigationMenu {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    gap: 20px;
+}
+#backdrop {
+    all: unset;
+    width: 39%;
+    height: 100%;
+    z-index: 50;
+    background-color: black;
+    opacity: 0.6;
+}
