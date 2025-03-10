@@ -9,16 +9,16 @@ export function Gallery() {
             <div id="galleryBackground"/>
                 <div id="closeContainer" >
                     <button id="close" onClick={() => setIsGalleryOpen((prev) => (!prev))}>
-                        <img src='/images/icon-close.svg' alt="close"/>
+                        <img src={`${import.meta.env.BASE_URL}/images/icon-close.svg`} alt="close"/>
                     </button>
                 </div>
             <div id="galleryCaroussel">
                 <Caroussel/>
                     <button id="previous" onClick={() => setImagePick((prev) => ((prev - 2 + 4) % 4) + 1)}>
-                        <img src='/images/icon-next.svg' alt="previous"/>
+                        <img src={`${import.meta.env.BASE_URL}/images/icon-next.svg`}  alt="previous"/>
                     </button>
                     <button id="next" onClick={() => setImagePick((prev) => ((prev % 4) + 1))}>
-                        <img src='/images/icon-next.svg' alt="next"/>
+                        <img src={`${import.meta.env.BASE_URL}/images/icon-next.svg`}  alt="next"/>
                     </button>
             </div>
         </div>

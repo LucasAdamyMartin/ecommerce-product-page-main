@@ -17,25 +17,25 @@ export function Header() {
           <div id="containerHeader">
             <div id="leftHeader">
               <button id="menu" onClick={() => setMenuIsOpen((prev) => (!prev))}>
-                <img src='/images/icon-menu.svg' alt='menu'/>
+                <img src={`${import.meta.env.BASE_URL}/images/icon-menu.svg`}  alt='menu'/>
               </button>
               <h1 id="title">sneakers</h1>
               <div id="navigation">
                 {navigation_items.map((item) => (
                   <div key={item} id={item}>
-                    <a href="/">{item}</a>
+                    <a href="/ecommerce-product-page-main/">{item}</a>
                   </div>
                 ))}
               </div>
             </div>
             <div id="rightHeader">
               <button onClick={handleChange} id="cartButton">
-                <img src="/images/icon-cart.svg" alt="cart"/>
+                <img src={`${import.meta.env.BASE_URL}/images/icon-cart.svg`}  alt="cart"/>
                 {showProduct && <div>{countPanier}</div>}
               </button>
               {cartIsOpen && <Cart/> }  
-              <a href='/'>
-              <img id="profile" src="/images/image-avatar.png" alt="profile"/>
+              <a href='/ecommerce-product-page-main/'>
+              <img id="profile" src={`${import.meta.env.BASE_URL}/images/image-avatar.png`}  alt="profile"/>
               </a>
             </div>
         </div>

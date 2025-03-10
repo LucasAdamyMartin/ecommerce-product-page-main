@@ -10,13 +10,13 @@ export function Menu() {
             <div id="menuContainer">
                 <div id="menuClose">
                     <button onClick={() => setMenuIsOpen(false)}>
-                        <img src='/images/icon-close.svg' alt='close'/>
+                        <img src={`${import.meta.env.BASE_URL}/images/icon-close.svg`}  alt='close'/>
                     </button>
                 </div>
                 <div id="navigationMenu">
                     {navigation_items.map((item) => (
                         <div key={item} id={item}>
-                                        <a href="/">{item}</a>
+                                        <a href="/ecommerce-product-page-main/">{item}</a>
                                         </div>
                     ))}
                 </div>

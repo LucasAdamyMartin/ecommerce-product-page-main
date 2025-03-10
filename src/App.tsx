@@ -6,6 +6,7 @@ import { ImageProvider } from './context/ImageProvider';
 import { Gallery } from './components/Gallery';
 import { useEffect, useState } from 'react';
 import { Menu } from './components/Menu';
+import { BrowserRouter } from 'react-router-dom';
 
 function AppContent() {
   const {isGalleryOpen, imagePick, setCartIsOpen, setShowProduct , setCountPanier, setImagePick, menuIsOpen, setMenuIsOpen} = useImage();
@@ -47,7 +48,7 @@ function AppContent() {
   }, [windowSize.width]);
  
   return (
-    <>
+    <BrowserRouter basename="/ecommerce-product-page-main">
       <Header/>
       {menuIsOpen && <Menu/>}
       {isGalleryOpen && <Gallery/>}
@@ -56,12 +57,12 @@ function AppContent() {
         <div id="imageSection">
           { (windowSize.width > 650) ? <Caroussel/> : 
           <div id="largeImageMobile">
-            <img src={`/images/image-product-${imagePick}.jpg`} alt={`product${imagePick}`}/>
+            <img src={`${import.meta.env.BASE_URL}/images/image-product-${imagePick}.jpg`} alt={`product${imagePick}`}/>
             <button id="previousMobile" onClick={() => setImagePick((prev) => ((prev - 2 + 4) % 4) + 1)}>
-              <img src='/images/icon-next.svg' alt="previousMobile" style={{   rotate: '180deg', width: '12px', height: 'auto' }}/>
+              <img src={`${import.meta.env.BASE_URL}/images/icon-next.svg`} alt="previousMobile" style={{   rotate: '180deg', width: '12px', height: 'auto' }}/>
             </button>
             <button id="nextMobile" onClick={() => setImagePick((prev) => ((prev % 4) + 1))}>
-              <img src='/images/icon-next.svg' alt="nextMobile" style={{ width: '12px', height: 'auto' }}/>
+              <img src={`${import.meta.env.BASE_URL}/images/icon-next.svg`} alt="nextMobile" style={{ width: '12px', height: 'auto' }}/>
             </button>
           </div>
         }
@@ -81,22 +82,22 @@ function AppContent() {
           <div id="addToCart">
             <div id="numberOfProduct">
               <button onClick={handleRemovePanier}>
-                <img id="minus" src='/images/icon-minus.svg' alt="minus"/>
+                <img id="minus" src={`${import.meta.env.BASE_URL}/images/icon-minus.svg`} alt="minus"/>
               </button>
               <p>{selectedQuantity}</p>
               <button onClick={handleAddPanier}>
-                <img id="plus" src='/images/icon-plus.svg' alt="plus"/>
+                <img id="plus" src={`${import.meta.env.BASE_URL}/images/icon-plus.svg`} alt="plus"/>
               </button>
             </div>
             <button id="buttonToAdd" onClick={handlePlaceIn}>
-              <img src='images/icon-cart.svg' alt='cart'/>
+              <img src={`${import.meta.env.BASE_URL}/images/icon-cart.svg`} alt='cart'/>
               <p>Add to cart</p>
             </button>
         </div>
         </div>
       </div>
       </div>
-    </>
+    </BrowserRouter>
   )
 }
 
